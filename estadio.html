@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <!-- Campo de Futebol -->
+        <a-plane color="green" rotation="-90 0 0" width="100" height="100"></a-plane>
+
+        <!-- Arquibancada (sugestão: use modelos 3D para detalhes mais complexos) -->
+        <a-assets>
+            <a-asset-item id="model" src="./kitchen-model/source/Kitchen Model.fbx"></a-asset-item>
+        </a-assets>
+
+        <!-- Bola de Futebol -->
+        <a-sphere position="0 5 -20" radius="1" color="white"></a-sphere>
+
+        <!-- Câmera -->
+        <!-- <a-entity camera look-controls>
+            <a-cursor></a-cursor>
+        </a-entity> -->
+    </a-scene>
+</body>
+</html>
