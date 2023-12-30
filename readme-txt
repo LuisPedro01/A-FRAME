@@ -1,0 +1,1 @@
+npm i -g five-server@latest && five-server --port=8000

@@ -2,18 +2,59 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
   </head>
   <body>
     <a-scene>
-      <a-sphere src="https://as1.ftcdn.net/v2/jpg/00/32/70/92/1000_F_32709219_eUEJoIqlKuOqpOMkGSR6QI9sNsA2djS7.jpg" position="0 1 0" radius="1"></a-sphere>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="100" height="100" src="https://as2.ftcdn.net/v2/jpg/03/05/77/51/1000_F_305775190_pfhJSdSpTjYG1cERgWb4wLLrQQPco1fU.jpg"></a-plane>
+      <!-- Jogadores -->
+      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="0 0 -4"></a-entity>
+      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="10 0 -4"></a-entity>
+      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="20 0 -4"></a-entity>
+      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="30 0 -4"></a-entity>
+      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="-10 0 -4"></a-entity>
+      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="-20 0 -4"></a-entity>
+      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="-30 0 -4"></a-entity>
+
+      <!-- Bola -->
+      <a-entity gltf-model="url(./bola/scene.gltf)" scale="0.2 0.2 0.2"></a-entity>
+
+      <!-- Bancada -->
+      <a-entity gltf-model="url(./bancada2/scene.gltf)" position="-30 0 -4"></a-entity>
+      <a-entity gltf-model="url(./bancadaTop/scene.gltf)" position="-30 15 80" scale="4 4 4" rotation="0 -180 0s"></a-entity>
+      <a-entity gltf-model="url(./tribune/scene.gltf)" position="-30 0 -4"></a-entity>
+
+
+      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="-63 0 -62"></a-entity>
+      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="-42 0 -62"></a-entity>
+      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="-21 0 -62"></a-entity>
+      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="0 0 -62"></a-entity>
+      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="21 0 -62"></a-entity>
+      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="42 0 -62"></a-entity>
+      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="63 0 -62"></a-entity>
+
+      <!-- Banco -->
+      <a-entity gltf-model="url(./banco/scene.gltf)" position="100 -0.5 -10" rotation="0 -90d 0"></a-entity>
+      <a-entity gltf-model="url(./banco/scene.gltf)" position="90 -0.5 -10" rotation="0 -90d 0"></a-entity>
+      <a-entity gltf-model="url(./banco/scene.gltf)" position="8s0 -0.5 -10" rotation="0 -90d 0"></a-entity>
+
+
+      <!-- Luzes -->
+      <a-entity gltf-model="url(./stadium_light/scene.gltf)" scale="0.001 0.001 0.0s01s"></a-entity>
+
+
+      <!-- Baliza -->
+      <a-entity gltf-model="url(./baliza/scene.gltf)" scale="3 3 3" rotation="0 -90 0" position="s63 0 -4"></a-entity>
+      <a-entity gltf-model="url(./baliza/scene.gltf)" scale="3 3 3" rotation="0 90 0" position="-63 0 -4"></a-entity>
+
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="130" height="100" src="https://as2.ftcdn.net/v2/jpg/03/05/77/51/1000_F_305775190_pfhJSdSpTjYG1cERgWb4wLLrQQPco1fU.jpg"></a-plane>
       <a-sky src="https://t3.ftcdn.net/jpg/01/02/64/28/360_F_102642850_Mca9lTRDH60DQin39YwCF5Jzd15lcdoo.jpg"></a-sky>
       <a-entity id="rig" position="25 10 0">
         <a-entity id="camera" camera look-controls wasd-controls></a-entity>
       </a-entity>
-    </a-scene>
 
-    <footer>
+
+    </a-scene>
+    <div>
       <div id="controlsUI">
         <div id="upArrow" class="arrow" onclick="moveUp()">▲</div>
         <div id="downArrow" class="arrow" onclick="moveDown()">▼</div>
@@ -23,12 +64,12 @@
         #controlsUI {
           position: absolute;
           bottom: 10px;
-          left: 10px;
+          left: 30px;
         }
 
         .arrow {
           cursor: pointer;
-          font-size: 20px;
+          font-size: 30px;
           margin-bottom: 10px;
         }
       </style>
@@ -42,6 +83,7 @@
           document.querySelector('#rig').setAttribute('position', { y: document.querySelector('#rig').getAttribute('position').y - 1 });
         }
       </script>
-    </footer>
+    </div>
+
   </body>
 </html>

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bench | Seating | Bus-Stop
+* source:	https://sketchfab.com/3d-models/bench-seating-bus-stop-90eea2fffd6042eda9e169ece5cb6672
+* author:	Hamode (https://sketchfab.com/mohammadzaid.cy)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bench | Seating | Bus-Stop" (https://sketchfab.com/3d-models/bench-seating-bus-stop-90eea2fffd6042eda9e169ece5cb6672) by Hamode (https://sketchfab.com/mohammadzaid.cy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
