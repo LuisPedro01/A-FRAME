@@ -8,6 +8,13 @@
     <a-scene>
       <!-- Jogadores -->
       <a-entity
+        gltf-model="url(./guardaRedes/scene.gltf)"
+        scale="4.9 4.9 4.9"
+        position="130 0 -4"
+        rotation="0 -90 0"
+        animation-mixer="clip:Take 001; loop:infinite"
+      ></a-entity>
+      <a-entity
         gltf-model="url(./correr/scene.gltf)"
         scale="3.8 3.8 3.8"
         position="0 0 -4"
@@ -164,7 +171,12 @@
 
       <!-- Camara -->
       <a-entity id="rig" position="0 10 10">
-        <a-entity id="camera" camera look-controls wasd-controls="acceleration: 100"></a-entity>
+        <a-entity
+          id="camera"
+          camera
+          look-controls
+          wasd-controls="acceleration: 100"
+        ></a-entity>
       </a-entity>
     </a-scene>
     <div>
@@ -192,60 +204,59 @@
         }
 
         #legendUI {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          color: white;
+          font-family: Arial, sans-serif;
+        }
 
-    .legend {
-      font-size: 14px;
-    }
+        .legend {
+          font-size: 14px;
+        }
       </style>
 
       <script>
         document.addEventListener("keydown", (event) => {
-          if(event.isTrusted && event.code==='ArrowUp'){
-            moveUp()
+          if (event.isTrusted && event.code === "ArrowUp") {
+            moveUp();
           }
-          if(event.isTrusted && event.code==='ArrowDown'){
-            moveDown()
+          if (event.isTrusted && event.code === "ArrowDown") {
+            moveDown();
           }
-          if(event.isTrusted && event.code==='ControlLeft'){
-            speedUp()
+          if (event.isTrusted && event.code === "ControlLeft") {
+            speedUp();
           }
-
         });
 
         document.addEventListener("keyup", (event) => {
-          if(event.isTrusted && event.code==='ControlLeft'){
-            speedDown()
+          if (event.isTrusted && event.code === "ControlLeft") {
+            speedDown();
           }
-        })
+        });
 
         function speedUp() {
-          document.getElementById('camera').setAttribute('wasd-controls', 'acceleration', 500);
+          document
+            .getElementById("camera")
+            .setAttribute("wasd-controls", "acceleration", 500);
         }
 
         function speedDown() {
-          document.getElementById('camera').setAttribute('wasd-controls', 'acceleration', 200);
+          document
+            .getElementById("camera")
+            .setAttribute("wasd-controls", "acceleration", 200);
         }
 
-         function moveUp() {
-          document
-            .querySelector("#rig")
-            .setAttribute("position", {
-              y: document.querySelector("#rig").getAttribute("position").y + 10,
-            });
+        function moveUp() {
+          document.querySelector("#rig").setAttribute("position", {
+            y: document.querySelector("#rig").getAttribute("position").y + 10,
+          });
         }
 
         function moveDown() {
-          document
-            .querySelector("#rig")
-            .setAttribute("position", {
-              y: document.querySelector("#rig").getAttribute("position").y - 10,
-            });
+          document.querySelector("#rig").setAttribute("position", {
+            y: document.querySelector("#rig").getAttribute("position").y - 10,
+          });
         }
       </script>
     </div>
