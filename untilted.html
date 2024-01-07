@@ -7,64 +7,165 @@
   <body>
     <a-scene>
       <!-- Jogadores -->
-      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="0 0 -4" animation="property: position; startEvents: Take 001; to: 0 360 0; loop: true; dur: 10000"></a-entity>
-      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3.8 3.8 3.8" position="10 0 -4" animation-mixer="clip:Take 001; loop:infinite"></a-entity>
-      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="20 0 -4"></a-entity>
-      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="30 0 -4"></a-entity>
-      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="-10 0 -4"></a-entity>
-      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="-20 0 -4"></a-entity>
-      <a-entity gltf-model="url(./correr/scene.gltf)" scale="3 3 3" position="-30 0 -4"></a-entity>
-
-      <a-gltf-model src="url(./correr/scene.gltf)" scale="3 3 3" position="-40 0 -4" animation-mixer="clip:Take 001"></a-gltf-model>
-
+      <a-entity
+        gltf-model="url(./correr/scene.gltf)"
+        scale="3.8 3.8 3.8"
+        position="0 0 -4"
+        animation-mixer="clip:Take 001; loop:infinite"
+      ></a-entity>
+      <a-entity
+        gltf-model="url(./correr/scene.gltf)"
+        scale="3.8 3.8 3.8"
+        position="10 0 -4"
+        animation-mixer="clip:Take 001; loop:infinite"
+      ></a-entity>
+      <a-entity
+        gltf-model="url(./correr/scene.gltf)"
+        scale="3.8 3.8 3.8"
+        position="20 0 -4"
+        animation-mixer="clip:Take 001; loop:infinite"
+      ></a-entity>
+      <a-entity
+        gltf-model="url(./correr/scene.gltf)"
+        scale="3.8 3.8 3.8"
+        position="30 0 -4"
+        animation-mixer="clip:Take 001; loop:infinite"
+      ></a-entity>
+      <a-entity
+        gltf-model="url(./correr/scene.gltf)"
+        scale="3.8 3.8 3.8"
+        position="-10 0 -4"
+        animation-mixer="clip:Take 001; loop:infinite"
+      ></a-entity>
+      <a-entity
+        gltf-model="url(./correr/scene.gltf)"
+        scale="3.8 3.8 3.8"
+        position="-20 0 -4"
+        animation-mixer="clip:Take 001; loop:infinite"
+      ></a-entity>
+      <a-entity
+        gltf-model="url(./correr/scene.gltf)"
+        scale="3.8 3.8 3.8"
+        position="-30 0 -4"
+        animation-mixer="clip:Take 001; loop:infinite"
+      ></a-entity>
 
       <!-- Bola -->
-      <a-entity gltf-model="url(./bola/scene.gltf)" scale="0.2 0.2 0.2"></a-entity>
+      <a-entity
+        gltf-model="url(./bola/scene.gltf)"
+        scale="0.3 0.3 0.3"
+      ></a-entity>
 
       <!-- Bancada -->
       <!-- <a-entity gltf-model="url(./bancada2/scene.gltf)" position="-30 0 -4"></a-entity> -->
       <!-- <a-entity gltf-model="url(./bancadaTop/scene.gltf)" position="-30 15 80" scale="4 4 4" rotation="0 -180 0s"></a-entity> -->
-      <a-entity gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-175 0 150" rotation="0 90 0"></a-entity>
-      <a-entity gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-35 0 150" rotation="0 90 0"></a-entity>
+      <a-entity
+        gltf-model="url(./tribune/scene.gltf)"
+        scale="1.5 1.5 1.5"
+        position="-175 0 150"
+        rotation="0 90 0"
+      ></a-entity>
+      <a-entity
+        gltf-model="url(./tribune/scene.gltf)"
+        scale="1.5 1.5 1.5"
+        position="-35 0 150"
+        rotation="0 90 0"
+      ></a-entity>
 
-
-      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="-63 0 -120"></a-entity>
-      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="-42 0 -120"></a-entity>
-      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="-21 0 -120"></a-entity>
-      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="0 0 -120"></a-entity>
-      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="21 0 -120"></a-entity>s
-      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="42 0 -120"></a-entity>
-      <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)" position="63 0 -120"></a-entity>
+      <a-entity
+        obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
+        position="-63 0 -120"
+      ></a-entity>
+      <a-entity
+        obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
+        position="-42 0 -120"
+      ></a-entity>
+      <a-entity
+        obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
+        position="-21 0 -120"
+      ></a-entity>
+      <a-entity
+        obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
+        position="0 0 -120"
+      ></a-entity>
+      <a-entity
+        obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
+        position="21 0 -120"
+      ></a-entity
+      >s
+      <a-entity
+        obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
+        position="42 0 -120"
+      ></a-entity>
+      <a-entity
+        obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
+        position="63 0 -120"
+      ></a-entity>
 
       <!-- Banco -->
-      <a-entity gltf-model="url(./banco/scene.gltf)" position="100 -0.5 -10" rotation="0 -90 0"></a-entity>
-      <a-entity gltf-model="url(./banco/scene.gltf)" position="90 -0.5 -10" rotation="0 -90 0"></a-entity>
-      <a-entity gltf-model="url(./banco/scene.gltf)" position="8s0 -0.5 -10" rotation="0 -90 0"></a-entity>
-
+      <a-entity
+        gltf-model="url(./banco/scene.gltf)"
+        position="100 -0.5 -10"
+        rotation="0 -90 0"
+      ></a-entity>
+      <a-entity
+        gltf-model="url(./banco/scene.gltf)"
+        position="90 -0.5 -10"
+        rotation="0 -90 0"
+      ></a-entity>
+      <a-entity
+        gltf-model="url(./banco/scene.gltf)"
+        position="8s0 -0.5 -10"
+        rotation="0 -90 0"
+      ></a-entity>
 
       <!-- Luzes -->
-      <a-entity gltf-model="url(./stadium_light/scene.gltf)" scale="0.001 0.001 0.0s01s"></a-entity>
-
+      <a-entity
+        gltf-model="url(./stadium_light/scene.gltf)"
+        scale="0.001 0.001 0.0s01s"
+      ></a-entity>
 
       <!-- Baliza -->
-      <a-entity gltf-model="url(./baliza/scene.gltf)" scale="5 5 5" rotation="0 -90 0" position="145 0 -4"></a-entity>
-      <a-entity gltf-model="url(./baliza/scene.gltf)" scale="5 5 5" rotation="0 90 0" position="-145 0 -4"></a-entity>
+      <a-entity
+        gltf-model="url(./baliza/scene.gltf)"
+        scale="5 5 5"
+        rotation="0 -90 0"
+        position="145 0 -4"
+      ></a-entity>
+      <a-entity
+        gltf-model="url(./baliza/scene.gltf)"
+        scale="5 5 5"
+        rotation="0 90 0"
+        position="-145 0 -4"
+      ></a-entity>
 
       <!-- Relvado -->
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="300" height="220" src="https://as2.ftcdn.net/v2/jpg/03/05/77/51/1000_F_305775190_pfhJSdSpTjYG1cERgWb4wLLrQQPco1fU.jpg"></a-plane>
-      
+      <a-plane
+        position="0 0 -4"
+        rotation="-90 0 0"
+        width="300"
+        height="220"
+        src="https://as2.ftcdn.net/v2/jpg/03/05/77/51/1000_F_305775190_pfhJSdSpTjYG1cERgWb4wLLrQQPco1fU.jpg"
+      ></a-plane>
+
       <!-- Chão -->
-      <a-plane position="0 -1.5 -4" rotation="-90 0 0" width="1000" height="1000" color="grey"></a-plane>
+      <a-plane
+        position="0 -1.5 -4"
+        rotation="-90 0 0"
+        width="1000"
+        height="1000"
+        color="grey"
+      ></a-plane>
 
       <!-- Céu -->
-      <a-sky src="https://t3.ftcdn.net/jpg/01/02/64/28/360_F_102642850_Mca9lTRDH60DQin39YwCF5Jzd15lcdoo.jpg"></a-sky>
+      <a-sky
+        src="https://t3.ftcdn.net/jpg/01/02/64/28/360_F_102642850_Mca9lTRDH60DQin39YwCF5Jzd15lcdoo.jpg"
+      ></a-sky>
 
       <!-- Camara -->
       <a-entity id="rig" position="0 10 10">
-        <a-entity id="camera" camera look-controls wasd-controls></a-entity>
+        <a-entity id="camera" camera look-controls wasd-controls="acceleration: 100"></a-entity>
       </a-entity>
-
-
     </a-scene>
     <div>
       <div id="controlsUI">
@@ -87,15 +188,49 @@
       </style>
 
       <script>
-        function moveUp() {
-          document.querySelector('#rig').setAttribute('position', { y: document.querySelector('#rig').getAttribute('position').y + 10 });
+        document.addEventListener("keydown", (event) => {
+          if(event.isTrusted && event.code==='ArrowUp'){
+            moveUp()
+          }
+          if(event.isTrusted && event.code==='ArrowDown'){
+            moveDown()
+          }
+          if(event.isTrusted && event.code==='ControlLeft'){
+            speedUp()
+          }
+
+        });
+
+        document.addEventListener("keyup", (event) => {
+          if(event.isTrusted && event.code==='ControlLeft'){
+            speedDown()
+          }
+        })
+
+        function speedUp() {
+          document.getElementById('camera').setAttribute('wasd-controls', 'acceleration', 500);
+        }
+
+        function speedDown() {
+          document.getElementById('camera').setAttribute('wasd-controls', 'acceleration', 200);
+        }
+
+         function moveUp() {
+          document
+            .querySelector("#rig")
+            .setAttribute("position", {
+              y: document.querySelector("#rig").getAttribute("position").y + 10,
+            });
         }
 
         function moveDown() {
-          document.querySelector('#rig').setAttribute('position', { y: document.querySelector('#rig').getAttribute('position').y - 10 });
+          document
+            .querySelector("#rig")
+            .setAttribute("position", {
+              y: document.querySelector("#rig").getAttribute("position").y - 10,
+            });
         }
       </script>
     </div>
-
   </body>
 </html>
