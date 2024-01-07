@@ -172,7 +172,12 @@
         <div id="upArrow" class="arrow" onclick="moveUp()">▲</div>
         <div id="downArrow" class="arrow" onclick="moveDown()">▼</div>
       </div>
-
+      <div id="legendUI">
+        <div class="legend">Controlos:</div>
+        <div class="legend">WASD - Movimentação</div>
+        <div class="legend">Setas para cima/baixo - Altura</div>
+        <div class="legend">Press CtrlLeft - Aumentar Velocidade</div>
+      </div>
       <style>
         #controlsUI {
           position: absolute;
@@ -185,6 +190,18 @@
           font-size: 30px;
           margin-bottom: 10px;
         }
+
+        #legendUI {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .legend {
+      font-size: 14px;
+    }
       </style>
 
       <script>
