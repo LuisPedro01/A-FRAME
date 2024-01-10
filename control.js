@@ -58,28 +58,32 @@ function tryKick() {
     }
 }
 
-// Adicione a verificação de colisão entre o jogador e a bola
-AFRAME.registerComponent("player-collider", {
+AFRAME.registerComponent("player1", {
     init: function () {
-        var el = this.el;
+      var el = this.el;
 
-        el.addEventListener("collide", function (e) {
-            console.log("Collision detected", e.detail.body.el.id, el.id);
-            if (e.detail.body.el.id === "ball" && el.id === "player1") {
-                playerInContactWithBall = true;
-            }
-        });
-        
+      el.addEventListener("collide", function (e) {
+        if (e.detail.body.el.id === "ball" && el.id === "player1") {
+          console.log("Collision detected between player and ball");
+          
+        }
+      });
     },
-});
+  });
+
 // Função para verificar e atualizar o movimento contínuo
 function checkMovement() {
+    var player = document.getElementById("player1");
+
     if (keysPressed.includes("ArrowUp")) {
         movingDirection = "forward";
     } else if (keysPressed.includes("ArrowDown")) {
         movingDirection = "backward";
     } else {
         movingDirection = null;
+        if(player){
+            player.setAttribute('gltf-model','./guardaRedes/scene.gltf');
+        }
     }
 }
 
@@ -105,7 +109,10 @@ function movePlayer() {
                 console.log("Moving backward");
                 break;
         }
-
+        if(player){
+            player.setAttribute('gltf-model','./correr/scene.gltf');
+        }
+        
         updateCameraPosition();
     }
 }
