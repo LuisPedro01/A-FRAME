@@ -104,12 +104,10 @@ function movePlayer() {
             case "forward":
                 player.object3D.position.x -= deltaX;
                 player.object3D.position.z -= deltaZ;
-                console.log("Moving forward");
                 break;
             case "backward":
                 player.object3D.position.x += deltaX;
                 player.object3D.position.z += deltaZ;
-                console.log("Moving backward");
                 break;
         }
         if(player){
@@ -147,15 +145,12 @@ function startRotation(direction) {
       requestAnimationFrame(rotate);
     }
   }
-
-  console.log("Rotation started");
   rotate();
 }
 
 // Função para parar a rotação
 function stopRotation() {
   rotating = false;
-  console.log("Rotation stopped");
 }
 
 // Função para rotacionar o jogador
