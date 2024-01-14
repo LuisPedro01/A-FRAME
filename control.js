@@ -115,12 +115,8 @@ function movePlayer() {
         if(player){
             player.setAttribute('gltf-model','./correr/scene.gltf');
         }
-        
         updateCameraPosition();
     }
-
-    updateCameraPosition();
-  }
 }
 
 // Função para atualizar a posição da câmera
