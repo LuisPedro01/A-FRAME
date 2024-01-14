@@ -2,10 +2,27 @@
 <html>
 
 <head>
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>
-  <!--<script src="https://aframe.io/releases/1.2.0/aframe-physics-system.min.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/@c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
+  <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.2.0/dist/aframe-physics-system.min.js"></script> -->
+
   <script src="control.js"></script>
+
+  <script>
+    AFRAME.registerComponent("foo", {
+      init: function() {
+    this.el.addEventListener("model-loaded", (e)=>{
+    console.log(e)
+     document.querySelector("#one").setAttribute("dynamic-body", "")
+     document.querySelector("#two").setAttribute("dynamic-body", "")
+     document.querySelector("#ball").setAttribute("dynamic-body", "")
+     document.querySelector("#player1").setAttribute("static-body", "")
+
+    })
+      }
+    })
+    </script>
 
 </head>
 
@@ -13,13 +30,18 @@
   <a-scene physics="debug: true">
     <!-- Jogadores -->
     <a-entity id="goalkeeper" gltf-model="url(./guardaRedes/scene.gltf)" scale="4.9 4.9 4.9" position="130 0 -4"
-      rotation="0 -90 0" animation-mixer="clip:Take 001; loop:infinite" physics-body></a-entity>
+      rotation="0 -90 0" animation-mixer="clip:Take 001; loop:infinite"></a-entity>
 
-    <a-entity id="player1" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="0 0 -4"
-      player-collider dynamic-body></a-entity>
 
-    <a-entity id="ball" gltf-model="url(./bola/scene.gltf)" scale="0.3 0.3 0.3" position="0 0 -4" dynamic-body>
-    </a-entity>
+
+      <a-sphere id="one" position="2 30 -4" radius="1.25" color="#EF2D5E" ></a-sphere>
+      <a-sphere id="two" position="0 5 -4" radius="1.25" color="#EF2D5E" ></a-sphere>
+
+      
+      <!-- <a-gltf-model foo static-body id="player1" class="player1" scale="3.8 3.8 3.8" position="2 0 -4" src="url(./guardaRedes/scene.gltf)" ></a-gltf-model> -->
+      <a-entity foo id="player1" class="player1" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="2 0 -4"></a-entity>
+      
+      <a-entity id="ball" class="ball" gltf-model="url(./bola/scene.gltf)" scale="0.3 0.3 0.3" position="0 10 -4" ></a-entity>
 
 
 
@@ -33,38 +55,38 @@
 
     <!-- EQUIPA1 -->
     <!-- DEFESAS -->
-    <a-entity id="NPC1" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 55"
+    <a-entity id="NPC1" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 55" static-body 
       rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity id="NPC2" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 20"
+    <a-entity id="NPC2" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 20" 
       rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity id="NPC3" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 -20"
+    <a-entity id="NPC3" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 -20" 
       rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity id="NPC4" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 -55"
+    <a-entity id="NPC4" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 -55" 
       rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
     <!-- MEDIOS -->
-    <a-entity id="NPC5" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="40 0 -5"
+    <a-entity id="NPC5" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="40 0 -5" 
       rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity id="NPC6" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="40 0 -45"
+    <a-entity id="NPC6" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="40 0 -45" 
       rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity id="NPC7" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="40 0 40"
+    <a-entity id="NPC7" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="40 0 40" 
       rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
 
     <!-- EQUIPA2 -->
     <!-- DEFESAS -->
-    <a-entity id="NPC1" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 55"
+    <a-entity id="NPC1" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 55" 
       rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity id="NPC2" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 20"
+    <a-entity id="NPC2" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 20" 
       rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity id="NPC3" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 -20"
+    <a-entity id="NPC3" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 -20" 
       rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity id="NPC4" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 -55"
+    <a-entity id="NPC4" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 -55" 
       rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
     <!-- MEDIOS -->
-    <a-entity id="NPC5" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-40 0 -5"
+    <a-entity id="NPC5" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-40 0 -5" 
       rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity id="NPC6" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-40 0 -45"
+    <a-entity id="NPC6" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-40 0 -45" 
       rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity id="NPC7" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-40 0 40"
+    <a-entity id="NPC7" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-40 0 40" 
       rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
 
     <!-- Bancada -->
@@ -106,11 +128,11 @@
     <a-entity gltf-model="url(./baliza/scene.gltf)" scale="5 5 5" rotation="0 90 0" position="-145 0 -4"></a-entity>
 
     <!-- Relvado -->
-    <a-plane position="0 0 -4" rotation="-90 0 0" width="300" height="220"
+    <a-plane position="0 0 -4" rotation="-90 0 0" width="300" height="220" static-body 
       src="https://as2.ftcdn.net/v2/jpg/03/05/77/51/1000_F_305775190_pfhJSdSpTjYG1cERgWb4wLLrQQPco1fU.jpg"></a-plane>
 
     <!-- Chão -->
-    <a-plane position="0 -1.5 -4" rotation="-90 0 0" width="1000" height="1000" color="grey"></a-plane>
+    <a-plane position="0 -1.5 -4" rotation="-90 0 0" width="1000" height="1000" color="grey" static-body foo ></a-plane>
 
     <!-- Céu -->
     <a-sky src="https://t3.ftcdn.net/jpg/01/02/64/28/360_F_102642850_Mca9lTRDH60DQin39YwCF5Jzd15lcdoo.jpg"></a-sky>
