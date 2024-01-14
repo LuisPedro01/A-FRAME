@@ -60,52 +60,63 @@ function tryKick() {
   }
 }
 
-// Adicione a verificação de colisão entre o jogador e a bola
-AFRAME.registerComponent("player-collider", {
-  init: function () {
-    var el = this.el;
 
-    el.addEventListener("collide", function (e) {
-      console.log("Collision detected", e.detail.body.el.id, el.id);
-      if (e.detail.body.el.id === "ball" && el.id === "player1") {
-        playerInContactWithBall = true;
-      }
-    });
-        
-  },
-});
+AFRAME.registerComponent("player1", {
+    init: function () {
+      var el = this.el;
+
+      el.addEventListener("collide", function (e) {
+        if (e.detail.body.el.id === "ball" && el.id === "player1") {
+          console.log("Collision detected between player and ball");
+          
+        }
+      });
+    },
+  });
+
 // Função para verificar e atualizar o movimento contínuo
 function checkMovement() {
-  if (keysPressed.includes("ArrowUp")) {
-    movingDirection = "forward";
-  } else if (keysPressed.includes("ArrowDown")) {
-    movingDirection = "backward";
-  } else {
-    movingDirection = null;
-  }
+    var player = document.getElementById("player1");
+
+    if (keysPressed.includes("ArrowUp")) {
+        movingDirection = "forward";
+    } else if (keysPressed.includes("ArrowDown")) {
+        movingDirection = "backward";
+    } else {
+        movingDirection = null;
+        if(player){
+            player.setAttribute('gltf-model','./guardaRedes/scene.gltf');
+        }
+    }
 }
 
 // Função para movimentar o jogador continuamente
 function movePlayer() {
-  var player = document.getElementById("player1");
-  var speed = 0.5;
+    var player = document.getElementById("player1");
+    var speed = 0.5;
 
-  if (movingDirection) {
-    var rotation = player.object3D.rotation.y;
-    var deltaX = -Math.sin(rotation) * speed;
-    var deltaZ = -Math.cos(rotation) * speed;
+    if (movingDirection) {
+        var rotation = player.object3D.rotation.y;
+        var deltaX = -Math.sin(rotation) * speed;
+        var deltaZ = -Math.cos(rotation) * speed;
 
-    switch (movingDirection) {
-      case "forward":
-        player.object3D.position.x -= deltaX;
-        player.object3D.position.z -= deltaZ;
-        console.log("Moving forward");
-        break;
-      case "backward":
-        player.object3D.position.x += deltaX;
-        player.object3D.position.z += deltaZ;
-        console.log("Moving backward");
-        break;
+        switch (movingDirection) {
+            case "forward":
+                player.object3D.position.x -= deltaX;
+                player.object3D.position.z -= deltaZ;
+                console.log("Moving forward");
+                break;
+            case "backward":
+                player.object3D.position.x += deltaX;
+                player.object3D.position.z += deltaZ;
+                console.log("Moving backward");
+                break;
+        }
+        if(player){
+            player.setAttribute('gltf-model','./correr/scene.gltf');
+        }
+        
+        updateCameraPosition();
     }
 
     updateCameraPosition();
