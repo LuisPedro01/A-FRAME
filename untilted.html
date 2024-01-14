@@ -3,9 +3,11 @@
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>
-    <!--<script src="https://aframe.io/releases/1.2.0/aframe-physics-system.min.js"></script>-->
+    <script src="https://aframe.io/releases/1.2.0/aframe-physics-system.min.js"></script>
     <script src="control.js"></script>
-    <script src="library/aframe-physics-system.js"></script>
+
+
+    
 
   </head>
   <body>
@@ -23,7 +25,7 @@
     
       <a-entity
         id="player1"
-        gltf-model="url(./guardaRedes/scene.gltf)"
+        gltf-model="url(./correr/scene.gltf)"
         scale="3.8 3.8 3.8"
         position="0 0 -4"
         player-collider
@@ -34,8 +36,9 @@
         id="ball"
         gltf-model="url(./bola/scene.gltf)"
         scale="0.3 0.3 0.3"
-        position="0 0 -4"
+        position="0 0 0"
         dynamic-body
+        ball-collider
       ></a-entity>
     
   
@@ -154,12 +157,12 @@
       rotation="0 -90 0"
     ></a-entity>
 
-    <!-- Luzes 
+    <!-- Luzes -->
     <a-entity
       gltf-model="url(./stadium_light/scene.gltf)"
       scale="0.001 0.001 0.0s01s"
     ></a-entity>
--->
+
     <!-- Baliza -->
     <a-entity
       gltf-model="url(./baliza/scene.gltf)"
