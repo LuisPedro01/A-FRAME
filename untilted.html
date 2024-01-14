@@ -52,44 +52,141 @@
       </a-entity>
 
 
+      <!-- Jogadores no campo -->
+
+      <!-- EQUIPA1 -->
+      <!-- DEFESAS -->
       <a-entity
-      gltf-model="url(./correr/scene.gltf)"
+      id="NPC1"
+      gltf-model="url(./guardaRedes/scene.gltf)"
       scale="3.8 3.8 3.8"
-      position="10 0 5"
-      animation-mixer="clip:Take 001; loop:infinite"
+      position="80 0 55"
+      rotation="0 -90 0"
+      animation-mixer="clip:Static pose"
       player-collider
     ></a-entity>
     <a-entity
-      gltf-model="url(./correr/scene.gltf)"
+      id="NPC2"
+      gltf-model="url(./guardaRedes/scene.gltf)"
       scale="3.8 3.8 3.8"
-      position="20 0 -4"
-      animation-mixer="clip:Take 001; loop:infinite"
+      position="80 0 20"
+      rotation="0 -90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
     ></a-entity>
     <a-entity
-      gltf-model="url(./correr/scene.gltf)"
+      id="NPC3"
+      gltf-model="url(./guardaRedes/scene.gltf)"
       scale="3.8 3.8 3.8"
-      position="30 0 -4"
-      animation-mixer="clip:Take 001; loop:infinite"
+      position="80 0 -20"
+      rotation="0 -90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
     ></a-entity>
     <a-entity
-      gltf-model="url(./correr/scene.gltf)"
+      id="NPC4"
+      gltf-model="url(./guardaRedes/scene.gltf)"
       scale="3.8 3.8 3.8"
-      position="-10 0 -4"
-      animation-mixer="clip:Take 001; loop:infinite"
+      position="80 0 -55"
+      rotation="0 -90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
+    ></a-entity>
+    <!-- MEDIOS -->
+    <a-entity
+      id="NPC5"
+      gltf-model="url(./guardaRedes/scene.gltf)"
+      scale="3.8 3.8 3.8"
+      position="40 0 -5"
+      rotation="0 -90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
     ></a-entity>
     <a-entity
-      gltf-model="url(./correr/scene.gltf)"
+      id="NPC6"
+      gltf-model="url(./guardaRedes/scene.gltf)"
       scale="3.8 3.8 3.8"
-      position="-20 0 -4"
-      animation-mixer="clip:Take 001; loop:infinite"
+      position="40 0 -45"
+      rotation="0 -90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
     ></a-entity>
     <a-entity
-      gltf-model="url(./correr/scene.gltf)"
+      id="NPC7"
+      gltf-model="url(./guardaRedes/scene.gltf)"
       scale="3.8 3.8 3.8"
-      position="-30 0 -4"
-      animation-mixer="clip:Take 001; loop:infinite"
+      position="40 0 40"
+      rotation="0 -90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
     ></a-entity>
 
+      <!-- EQUIPA2 -->
+      <!-- DEFESAS -->
+      <a-entity
+      id="NPC1"
+      gltf-model="url(./guardaRedes/scene.gltf)"
+      scale="3.8 3.8 3.8"
+      position="-80 0 55"
+      rotation="0 90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
+    ></a-entity>
+    <a-entity
+      id="NPC2"
+      gltf-model="url(./guardaRedes/scene.gltf)"
+      scale="3.8 3.8 3.8"
+      position="-80 0 20"
+      rotation="0 90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
+    ></a-entity>
+    <a-entity
+      id="NPC3"
+      gltf-model="url(./guardaRedes/scene.gltf)"
+      scale="3.8 3.8 3.8"
+      position="-80 0 -20"
+      rotation="0 90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
+    ></a-entity>
+    <a-entity
+      id="NPC4"
+      gltf-model="url(./guardaRedes/scene.gltf)"
+      scale="3.8 3.8 3.8"
+      position="-80 0 -55"
+      rotation="0 90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
+    ></a-entity>
+    <!-- MEDIOS -->
+    <a-entity
+      id="NPC5"
+      gltf-model="url(./guardaRedes/scene.gltf)"
+      scale="3.8 3.8 3.8"
+      position="-40 0 -5"
+      rotation="0 90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
+    ></a-entity>
+    <a-entity
+      id="NPC6"
+      gltf-model="url(./guardaRedes/scene.gltf)"
+      scale="3.8 3.8 3.8"
+      position="-40 0 -45"
+      rotation="0 90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
+    ></a-entity>
+    <a-entity
+      id="NPC7"
+      gltf-model="url(./guardaRedes/scene.gltf)"
+      scale="3.8 3.8 3.8"
+      position="-40 0 40"
+      rotation="0 90 0"
+      animation-mixer="clip:Static pose"
+      player-collider
+    ></a-entity>
 
     <!-- Bancada -->
     <!-- <a-entity gltf-model="url(./bancada2/scene.gltf)" position="-30 0 -4"></a-entity> -->
@@ -140,17 +237,17 @@
     <!-- Banco -->
     <a-entity
       gltf-model="url(./banco/scene.gltf)"
-      position="100 -0.5 -10"
+      position="100 -0.5 -65"
       rotation="0 -90 0"
     ></a-entity>
     <a-entity
       gltf-model="url(./banco/scene.gltf)"
-      position="90 -0.5 -10"
+      position="90 -0.5 -65"
       rotation="0 -90 0"
     ></a-entity>
     <a-entity
       gltf-model="url(./banco/scene.gltf)"
-      position="80 -0.5 -10"
+      position="80 -0.5 -65"
       rotation="0 -90 0"
     ></a-entity>
 
