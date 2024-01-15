@@ -46,7 +46,7 @@
         }
       })
     }
-    for (let i = 1; i <= 2; i++) {
+    for (let i = 1; i <= 6; i++) {
       AFRAME.registerComponent("bancada" + i, {
         init: function () {
           this.el.addEventListener("model-loaded", (e) => {
@@ -88,7 +88,7 @@
 </head>
 
 <body>
-  <a-scene physics="debug: true">
+  <a-scene physics="debug: false">
     <!-- Jogadores -->
     <a-entity id="goalkeeper" gltf-model="url(./guardaRedes/scene.gltf)" scale="4.9 4.9 4.9" position="130 0 -4"
       rotation="0 -90 0" animation-mixer="clip:Take 001; loop:infinite"></a-entity>
@@ -144,41 +144,59 @@
       rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
 
     <!-- Bancada -->
-    <!-- <a-entity gltf-model="url(./bancada2/scene.gltf)" position="-30 0 -4"></a-entity> -->
-    <!-- <a-entity gltf-model="url(./bancadaTop/scene.gltf)" position="-30 15 80" scale="4 4 4" rotation="0 -180 0s"></a-entity> -->
-    <a-entity bancada1 id="bancada1" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-175 0 150"
+    <!-- <a-entity gltf-model="url(./bancada2/scene.gltf)" position="-30 0 -4"></a-entity>
+    <a-entity gltf-model="url(./bancadaTop/scene.gltf)" position="-30 15 80" scale="4 4 4" rotation="0 -180 0s"></a-entity> -->
+
+     <a-entity bancada1 id="bancada1" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-175 0 150"
       rotation="0 90 0">
     </a-entity>
     <a-entity bancada2 id="bancada2" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-35 0 150"
       rotation="0 90 0">
     </a-entity>
-
-    <!-- <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
-      position="-63 0 -120"></a-entity>
-    <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
-      position="-42 0 -120"></a-entity>
-    <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
-      position="-21 0 -120"></a-entity>
-    <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
-      position="0 0 -120"></a-entity>
-    <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
-      position="21 0 -120"></a-entity>
-    <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
-      position="42 0 -120"></a-entity>
-    <a-entity obj-model="obj: url(./bancada/generic medium.obj); mtl: url(/bancada/generic medium.obj)"
-      position="63 0 -120"></a-entity> -->
+    <a-entity bancada3 id="bancada3" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="35 0 -150"
+      rotation="0 -90 0">
+    </a-entity>
+    <a-entity bancada4 id="bancada4" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="175 0 -150"
+      rotation="0 -90 0">
+    </a-entity>
+    <a-entity bancada5 id="bancada5" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="200 0 110"
+    rotation="0 -180 0">
+    </a-entity>
+    <a-entity bancada6 id="bancada6" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-200 0 -110" geometry="primitive: sphere"
+    rotation="0 0 0">
+    </a-entity>
 
     <!-- Banco -->
     <a-entity gltf-model="url(./banco/scene.gltf)" position="100 -0.5 -65" rotation="0 -90 0"></a-entity>
     <a-entity gltf-model="url(./banco/scene.gltf)" position="90 -0.5 -65" rotation="0 -90 0"></a-entity>
     <a-entity gltf-model="url(./banco/scene.gltf)" position="80 -0.5 -65" rotation="0 -90 0"></a-entity>
 
-    <!-- Luzes 
+    <!-- Luzes -->
     <a-entity
       gltf-model="url(./stadium_light/scene.gltf)"
-      scale="0.001 0.001 0.0s01s"
+      scale="0.05 0.05 0.05"
+      position="180 -8 100"
+      rotation="0 150 0"
     ></a-entity>
--->
+    <a-entity
+      gltf-model="url(./stadium_light/scene.gltf)"
+      scale="0.05 0.05 0.05"
+      position="-180 -8 100"
+      rotation="0 30 0"
+    ></a-entity>
+    <a-entity
+      gltf-model="url(./stadium_light/scene.gltf)"
+      scale="0.05 0.05 0.05"
+      position="-180 -8 -100"
+      rotation="0 -10 0"
+    ></a-entity>
+    <a-entity
+      gltf-model="url(./stadium_light/scene.gltf)"
+      scale="0.05 0.05 0.05"
+      position="180 -8 -100"
+      rotation="0 200 0"
+    ></a-entity>
+
     <!-- Baliza -->
     <a-entity baliza1 id="baliza1" gltf-model="url(./baliza/scene.gltf)" scale="5 5 5" rotation="0 -90 0"
       position="145 0 -4"></a-entity>
@@ -194,9 +212,9 @@
     </a-plane>
 
     <!-- Linhas Golo -->
-    <a-plane collision-handler class="plane" width="36" height="22" position="-144 1 -4" rotation="0 90 0" static-body>
+    <a-plane collision-handler class="plane" width="36" height="22" position="-144 1 -4" rotation="0 90 0" static-body opacity="0" transparent="true">
     </a-plane>
-    <a-plane collision-handler class="plane" width="36" height="22" position="145 1 -4" rotation="0 -90 0" static-body>
+    <a-plane collision-handler class="plane" width="36" height="22" position="145 1 -4" rotation="0 -90 0" static-body opacity="0" transparent="true">
     </a-plane>
 
 
