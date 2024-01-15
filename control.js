@@ -27,7 +27,6 @@ document.addEventListener("keydown", (event) => {
           tryKick();
           break;
       }
-      document.getElementById("player1").setAttribute("animation-mixer", "clip:Take 001; loop:infinite");
     }
   }
 });
@@ -49,7 +48,6 @@ document.addEventListener("keyup", (event) => {
         stopRotation();
         break;
     }
-    document.getElementById("player1").setAttribute("animation-mixer", "clip:Static pose");
   }
 });
 
@@ -86,6 +84,8 @@ function checkMovement() {
         movingDirection = null;
         if(player){
             player.setAttribute('gltf-model','./guardaRedes/scene.gltf');
+            document.getElementById("player1").setAttribute("animation-mixer", "clip:Static pose");
+
         }
     }
 }
@@ -111,7 +111,8 @@ function movePlayer() {
                 break;
         }
         if(player){
-            player.setAttribute('gltf-model','./correr/scene.gltf');
+          player.setAttribute('gltf-model','./correr/scene.gltf');
+          document.getElementById("player1").setAttribute("animation-mixer", "clip:Take 001; loop:infinite");
         }
         updateCameraPosition();
     }
