@@ -9,24 +9,6 @@
   <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.2.0/dist/aframe-physics-system.min.js"></script> -->
   <script src="control.js"></script>
 
-    <style>
-    #golo-message {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 20px;
-      background-color: #EF2D5E;
-      color: #fff;
-      display: none;
-      animation: fadeInOut 2s ease-in-out;
-    }
-
-    @keyframes fadeInOut {
-      0%, 100% { opacity: 0; }
-      25%, 75% { opacity: 1; }
-    }
-  </style>
   <script>
     AFRAME.registerComponent("foo", {
       init: function () {
@@ -90,20 +72,25 @@
 <body>
   <a-scene physics="debug: false">
     <!-- Jogadores -->
+
+    <!-- <a-sound src="src: url(./som.mp3)" autoplay="true" position="171 2 4" ></a-sound>
+    <a-sound src="src: url(./som.mp3)" autoplay="true" position="-171 2 4"></a-sound> -->
+
+
     <a-entity id="goalkeeper" gltf-model="url(./guardaRedes/scene.gltf)" scale="4.9 4.9 4.9" position="130 0 -4"
       rotation="0 -90 0" animation-mixer="clip:Take 001; loop:infinite"></a-entity>
 
     <a-sphere id="one" position="2 30 -4" radius="1.25" color="#EF2D5E" teste></a-sphere>
 
-    <!-- <a-gltf-model foo static-body id="player1" class="player1" scale="3.8 3.8 3.8" position="2 0 -4" src="url(./guardaRedes/scene.gltf)" ></a-gltf-model> -->
     <a-entity foo id="player1" class="player1" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8"
-      position="2 0 -4"></a-entity>
+    position="2 0 -4"></a-entity>
+    <!-- <a-gltf-model foo static-body id="player1" class="player1" scale="3.8 3.8 3.8" position="2 0 -4" src="url(./guardaRedes/scene.gltf)" ></a-gltf-model> -->
 
     <!-- <a-entity id="ball" class="ball" gltf-model="url(./bola/scene.gltf)" scale="0.3 0.3 0.3" position="0 10 -4" ></a-entity> -->
 
     <!-- Camera attached to player -->
     <a-entity id="rig" position="0 0 0">
-      <a-entity id="camera" camera look-controls position="0 10 10"></a-entity>
+      <a-entity id="camera" camera look-controls wasd-controls="acceleration:200" position="-150 20 10"></a-entity>
     </a-entity>
 
     <!-- Jogadores no campo -->
@@ -144,14 +131,11 @@
       rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
 
     <!-- Bancada -->
-    <!-- <a-entity gltf-model="url(./bancada2/scene.gltf)" position="-30 0 -4"></a-entity>
-    <a-entity gltf-model="url(./bancadaTop/scene.gltf)" position="-30 15 80" scale="4 4 4" rotation="0 -180 0s"></a-entity> -->
-
-     <a-entity bancada1 id="bancada1" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-175 0 150"
-      rotation="0 90 0">
+    <a-entity bancada1 id="bancada1" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-175 0 150" material="color: blue"
+      rotation="0 90 0"> 
     </a-entity>
     <a-entity bancada2 id="bancada2" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-35 0 150"
-      rotation="0 90 0"color="red">
+      rotation="0 90 0" color="red">
     </a-entity>
     <a-entity bancada3 id="bancada3" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="35 0 -150"
       rotation="0 -90 0">
@@ -160,10 +144,10 @@
       rotation="0 -90 0">
     </a-entity>
     <a-entity bancada5 id="bancada5" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="200 0 110"
-    rotation="0 -180 0">
+      rotation="0 -180 0">
     </a-entity>
-    <a-entity bancada6 id="bancada6" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-200 0 -110" geometry="primitive: sphere"
-    rotation="0 0 0">
+    <a-entity bancada6 id="bancada6" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-200 0 -110"
+      geometry="primitive: sphere" rotation="0 0 0">
     </a-entity>
 
     <!-- Banco -->
@@ -172,30 +156,14 @@
     <a-entity gltf-model="url(./banco/scene.gltf)" position="80 -0.5 -65" rotation="0 -90 0"></a-entity>
 
     <!-- Luzes -->
-    <a-entity
-      gltf-model="url(./stadium_light/scene.gltf)"
-      scale="0.05 0.05 0.05"
-      position="180 -8 100"
-      rotation="0 150 0"
-    ></a-entity>
-    <a-entity
-      gltf-model="url(./stadium_light/scene.gltf)"
-      scale="0.05 0.05 0.05"
-      position="-180 -8 100"
-      rotation="0 30 0"
-    ></a-entity>
-    <a-entity
-      gltf-model="url(./stadium_light/scene.gltf)"
-      scale="0.05 0.05 0.05"
-      position="-180 -8 -100"
-      rotation="0 -10 0"
-    ></a-entity>
-    <a-entity
-      gltf-model="url(./stadium_light/scene.gltf)"
-      scale="0.05 0.05 0.05"
-      position="180 -8 -100"
-      rotation="0 200 0"
-    ></a-entity>
+    <a-entity gltf-model="url(./stadium_light/scene.gltf)" scale="0.05 0.05 0.05" position="180 -8 100"
+      rotation="0 150 0"></a-entity>
+    <a-entity gltf-model="url(./stadium_light/scene.gltf)" scale="0.05 0.05 0.05" position="-180 -8 100"
+      rotation="0 30 0"></a-entity>
+    <a-entity gltf-model="url(./stadium_light/scene.gltf)" scale="0.05 0.05 0.05" position="-180 -8 -100"
+      rotation="0 -10 0"></a-entity>
+    <a-entity gltf-model="url(./stadium_light/scene.gltf)" scale="0.05 0.05 0.05" position="180 -8 -100"
+      rotation="0 200 0"></a-entity>
 
     <!-- Baliza -->
     <a-entity baliza1 id="baliza1" gltf-model="url(./baliza/scene.gltf)" scale="5 5 5" rotation="0 -90 0"
@@ -203,9 +171,114 @@
     <a-entity baliza2 id="baliza2" gltf-model="url(./baliza/scene.gltf)" scale="5 5 5" rotation="0 90 0"
       position="-145 0 -4"></a-entity>
 
-    <!-- Publico -->
-    <a-entity gltf-model="url(./publico1/scene.gltf)" scale="3 3 3" rotation="0 -90 0"  animation-mixer="clip:mixamo.com" 
-      position="145 0 -4"></a-entity>
+
+
+
+    <!-------------------------------------- Inicio Publico 1 -------------------------------------->
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 -90 0"
+      animation-mixer="clip:mixamo.com" position="171 2 4"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 -90 0"
+      animation-mixer="clip:mixamo.com" position="171 2 20"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 -90 0"
+      animation-mixer="clip:mixamo.com" position="191 10 10"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 -90 0"
+      animation-mixer="clip:mixamo.com" position="220 18 -30"></a-gltf-model>
+    <a-gltf-model src="url(./sentado/scene.gltf)" scale="2 2 2" rotation="0 -90 0" animation-mixer="clip:mixamo.com"
+      position="220 18 40"></a-gltf-model>
+    <a-gltf-model src="url(./1/scene.gltf)" scale="2 2 2" rotation="0 -90 0" animation-mixer="clip:mixamo.com"
+      position="170 2 -20"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 -90 0"
+      animation-mixer="clip:mixamo.com" position="180 7 -60"></a-gltf-model>
+    <a-gltf-model src="url(./2/scene.gltf)" scale="2 2 2" rotation="0 -90 0" animation-mixer="clip:mixamo.com"
+      position="200 12 -10"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 -90 0"
+      animation-mixer="clip:mixamo.com" position="171 2 15"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 -90 0"
+      animation-mixer="clip:mixamo.com" position="171 2 -35"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 -90 0"
+      animation-mixer="clip:mixamo.com" position="191 10 35"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 -90 0"
+      animation-mixer="clip:mixamo.com" position="220 18 30"></a-gltf-model>
+    <a-gltf-model src="url(./sentado/scene.gltf)" scale="2 2 2" rotation="0 -90 0" animation-mixer="clip:mixamo.com"
+      position="220 18 -40"></a-gltf-model>
+    <a-gltf-model src="url(./1/scene.gltf)" scale="2 2 2" rotation="0 -90 0" animation-mixer="clip:mixamo.com"
+      position="170 2 0"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 -90 0"
+      animation-mixer="clip:mixamo.com" position="180 7 60"></a-gltf-model>
+    <a-gltf-model src="url(./2/scene.gltf)" scale="2 2 2" rotation="0 -90 0" animation-mixer="clip:mixamo.com"
+      position="200 12 50"></a-gltf-model>
+    <!-------------------------------------- Fim Publico 1 -------------------------------------->
+
+    <!-------------------------------------- Inicio Publico 2 -------------------------------------->
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 90 0"
+      animation-mixer="clip:mixamo.com" position="-171 2 4"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 90 0"
+      animation-mixer="clip:mixamo.com" position="-171 2 20"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 90 0"
+      animation-mixer="clip:mixamo.com" position="-191 10 10"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 90 0"
+      animation-mixer="clip:mixamo.com" position="-220 18 -30"></a-gltf-model>
+    <a-gltf-model src="url(./sentado/scene.gltf)" scale="2 2 2" rotation="0 90 0" animation-mixer="clip:mixamo.com"
+      position="-220 18 40"></a-gltf-model>
+    <a-gltf-model src="url(./1/scene.gltf)" scale="2 2 2" rotation="0 90 0" animation-mixer="clip:mixamo.com"
+      position="-170 2 -20"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 90 0"
+      animation-mixer="clip:mixamo.com" position="-180 7 -60"></a-gltf-model>
+    <a-gltf-model src="url(./2/scene.gltf)" scale="2 2 2" rotation="0 90 0" animation-mixer="clip:mixamo.com"
+      position="-200 12 -10"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 90 0"
+      animation-mixer="clip:mixamo.com" position="-171 2 15"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 90 0"
+      animation-mixer="clip:mixamo.com" position="-171 2 -35"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 90 0"
+      animation-mixer="clip:mixamo.com" position="-191 10 35"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 90 0"
+      animation-mixer="clip:mixamo.com" position="-220 18 30"></a-gltf-model>
+    <a-gltf-model src="url(./sentado/scene.gltf)" scale="2 2 2" rotation="0 90 0" animation-mixer="clip:mixamo.com"
+      position="-220 18 -40"></a-gltf-model>
+    <a-gltf-model src="url(./1/scene.gltf)" scale="2 2 2" rotation="0 90 0" animation-mixer="clip:mixamo.com"
+      position="-170 2 0"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 90 0"
+      animation-mixer="clip:mixamo.com" position="-180 7 60"></a-gltf-model>
+    <a-gltf-model src="url(./2/scene.gltf)" scale="2 2 2" rotation="0 90 0" animation-mixer="clip:mixamo.com"
+      position="-200 12 50"></a-gltf-model>
+    <!-------------------------------------- Fim Publico 2 -------------------------------------->
+
+    <!-------------------------------------- Inicio Publico 3 -------------------------------------->
+    <!-- <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
+      animation-mixer="clip:mixamo.com" position="5 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
+      animation-mixer="clip:mixamo.com" position="10 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
+      animation-mixer="clip:mixamo.com" position="20 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
+      animation-mixer="clip:mixamo.com" position="30 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./sentado/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
+      position="40 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./1/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
+      position="50 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
+      animation-mixer="clip:mixamo.com" position="60 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./2/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
+      position="70 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
+      animation-mixer="clip:mixamo.com" position="80 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
+      animation-mixer="clip:mixamo.com" position="90 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
+      animation-mixer="clip:mixamo.com" position="100 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
+      animation-mixer="clip:mixamo.com" position="105 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./sentado/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
+      position="110 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./1/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
+      position="115 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
+      animation-mixer="clip:mixamo.com" position="140 10 -140"></a-gltf-model>
+    <a-gltf-model src="url(./2/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
+      position="112 10 -140"></a-gltf-model> -->
+<!-------------------------------------- Fim Publico 3 -------------------------------------->
+
 
 
     <!-- Cercas -->
@@ -217,9 +290,11 @@
     </a-plane>
 
     <!-- Linhas Golo -->
-    <a-plane collision-handler class="plane" width="36" height="22" position="-144 1 -4" rotation="0 90 0" static-body opacity="0" transparent="true">
+    <a-plane collision-handler class="plane" width="36" height="22" position="-144 1 -4" rotation="0 90 0" static-body
+      opacity="0" transparent="true">
     </a-plane>
-    <a-plane collision-handler class="plane" width="36" height="22" position="145 1 -4" rotation="0 -90 0" static-body opacity="0" transparent="true">
+    <a-plane collision-handler class="plane" width="36" height="22" position="145 1 -4" rotation="0 -90 0" static-body
+      opacity="0" transparent="true">
     </a-plane>
 
 
