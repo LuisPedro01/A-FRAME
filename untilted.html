@@ -19,15 +19,9 @@
         })
       }
     })
-    for (let i = 1; i <= 14; i++) {
-      AFRAME.registerComponent("teste" + i, {
-        init: function () {
-          this.el.addEventListener("model-loaded", (e) => {
-            document.querySelector("#NPC" + i).setAttribute("static-body", "");
-          });
-        }
-      })
-    }
+
+
+
     for (let i = 1; i <= 6; i++) {
       AFRAME.registerComponent("bancada" + i, {
         init: function () {
@@ -55,18 +49,8 @@
         }
       })
     }
-    AFRAME.registerComponent('teste', {
-      init: function () {
-        this.el.addEventListener('collide', function (e) {
-          if (e.detail.body.el.classList.contains('plane')) {
-            console.log('Golo')
-          }
-        });
-      }
-    });
 
   </script>
-
   <script>
     AFRAME.registerComponent("npc", {
       init: function () {
@@ -76,6 +60,11 @@
         var originalPosition = el.object3D.position.clone();
         var time = 0;
 
+        el.addEventListener("model-loaded", function (e) {
+          el.setAttribute("static-body", "");
+          moveNPC(); // Inicie o movimento após o modelo ser totalmente carregado
+        });
+
         function moveNPC() {
           var deltaX = amplitude * Math.sin(time);
           time += speed;
@@ -83,8 +72,6 @@
 
           requestAnimationFrame(moveNPC);
         }
-
-        moveNPC();
       }
     });
 
@@ -96,6 +83,11 @@
         var originalPosition = el.object3D.position.clone();
         var time = Math.PI;  // Inicia o movimento desfazado
 
+        el.addEventListener("model-loaded", function (e) {
+          el.setAttribute("static-body", "");
+          moveNPC2(); // Inicie o movimento após o modelo ser totalmente carregado
+        });
+
         function moveNPC2() {
           var deltaX = amplitude * Math.sin(time);
           time += speed;
@@ -103,8 +95,6 @@
 
           requestAnimationFrame(moveNPC2);
         }
-
-        moveNPC2();
       }
     });
 
@@ -116,6 +106,11 @@
         var originalPosition = el.object3D.position.clone();
         var time = 0;
 
+        el.addEventListener("model-loaded", function (e) {
+          el.setAttribute("static-body", "");
+          moveGoalkeeper(); // Inicie o movimento após o modelo ser totalmente carregado
+        });
+
         function moveGoalkeeper() {
           var deltaX = amplitude * Math.sin(time);
           time += speed;
@@ -123,8 +118,6 @@
 
           requestAnimationFrame(moveGoalkeeper);
         }
-
-        moveGoalkeeper();
       }
     });
   </script>
@@ -163,10 +156,9 @@
     <!-- EQUIPA1 -->
     <!-- DEFESAS -->
 
-
     <!-- Adicione a classe 'npc' aos NPCs -->
     <a-entity id="NPC1" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 55"
-      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider npc></a-entity>
+      rotation="0 -90 0" animation-mixer="clip:Static pose" npc></a-entity>
     <a-entity id="NPC2" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 20"
       rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider npc></a-entity>
     <a-entity id="NPC3" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 -20"
