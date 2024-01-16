@@ -1,0 +1,11 @@
+Model Information:
+* title:	Senor Sensor Sitting Talking
+* source:	https://sketchfab.com/3d-models/senor-sensor-sitting-talking-efb843710450471fb6c7cf1609c2a640
+* author:	Don B (https://sketchfab.com/nomomo)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Senor Sensor Sitting Talking" (https://sketchfab.com/3d-models/senor-sensor-sitting-talking-efb843710450471fb6c7cf1609c2a640) by Don B (https://sketchfab.com/nomomo) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

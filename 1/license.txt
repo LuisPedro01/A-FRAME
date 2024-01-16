@@ -1,0 +1,11 @@
+Model Information:
+* title:	Carla - Sitting Idle
+* source:	https://sketchfab.com/3d-models/carla-sitting-idle-9734fc2bb56e4ebeb90eb6929ba84d64
+* author:	nonny (https://sketchfab.com/nonny)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Carla - Sitting Idle" (https://sketchfab.com/3d-models/carla-sitting-idle-9734fc2bb56e4ebeb90eb6929ba84d64) by nonny (https://sketchfab.com/nonny) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
