@@ -59,6 +59,7 @@ AFRAME.registerComponent("baliza1", {
       el.addEventListener("collide", function (e) {
         if (e.detail.body.el.id === "ball" && el.id === "baliza01") {
           console.log("golo baliza1");
+          playGoalSound();
           score_1 += 1;
           setTimeout(function () {
             updateScoreText();
@@ -77,6 +78,7 @@ AFRAME.registerComponent("baliza2", {
     el.addEventListener("collide", function (e) {
       if (e.detail.body.el.id === "ball" && el.id === "baliza02") {
         console.log("golo baliza2");
+        playGoalSound();
         score_2 += 1;
         setTimeout(function () {
           updateScoreText();
@@ -185,6 +187,12 @@ function rotatePlayer(direction) {
   }
 }
 
+function playGoalSound() {
+  var goloSound = document.getElementById("goloSound");
+  if (goloSound) {
+    goloSound.components.sound.playSound();
+  }
+}
   
 function updateScoreText() {
   var scoreText = document.getElementById('score_1');

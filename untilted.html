@@ -17,6 +17,11 @@
           document.querySelector("#ball").setAttribute("dynamic-body", "mass:5")
           document.querySelector("#player1").setAttribute("static-body", "")
         })
+        this.el.addEventListener("collide", (e) => {
+        if (e.detail.body.el.id === "ball" || e.detail.target.el.id === "ball") {
+          document.querySelector("#som").components.sound.playSound();
+        }
+      });
       }
     })
 
@@ -127,10 +132,10 @@
 <body>
   <a-scene physics="debug: false; friction: 1;">
     <!-- Jogadores -->
+    <a-sound id="goloSound" src="src: url(./golo.mp3)" position="0 0 0" volume="80"></a-sound>
 
-    <!-- <a-sound src="src: url(./som.mp3)" autoplay="true" position="171 2 4" ></a-sound>
-    <a-sound src="src: url(./som.mp3)" autoplay="true" position="-171 2 4"></a-sound> -->
-
+    <a-sound src="src: url(./som.mp3)" autoplay="true" position="171 2 4" volume="10"></a-sound>
+    <a-sound src="src: url(./som.mp3)" autoplay="true" position="-171 2 4" volume="10"></a-sound>
 
     <a-entity id="goalkeeper" class="goalkeeper" gltf-model="url(./guardaRedes/scene.gltf)" scale="4.9 4.9 4.9"
       position="135.04903 0 -4" rotation="0 -90 0" animation-mixer="clip:Take 001; loop:infinite" player-collider
@@ -140,16 +145,18 @@
 
 
     <a-entity foo id="player1" class="player1" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8"
-      position="2 0 -4"></a-entity>
+      position="5 0 -4"></a-entity>
     <!-- <a-gltf-model foo static-body id="player1" class="player1" scale="3.8 3.8 3.8" position="2 0 -4" src="url(./guardaRedes/scene.gltf)" ></a-gltf-model> -->
 
     <!-- <a-entity id="ball" class="ball" gltf-model="url(./bola/scene.gltf)" scale="0.3 0.3 0.3" position="0 10 -4" ></a-entity> -->
-    <a-sphere id="ball" position="2 30 -4" radius="1.25" color="#EF2D5E" teste></a-sphere>
+    <a-sphere id="ball" position="1 2 -4" radius="1.25" color="#EF2D5E" teste></a-sphere>
 
     <!-- Camera attached to player -->
     <a-entity id="rig" position="0 0 0">
       <a-entity id="camera" camera look-controls position="0 10 10"></a-entity>
       <!-- <a-entity id="camera" camera look-controls wasd-controls="acceleration:200" position="-150 20 10"></a-entity>-->
+      <a-sound id="som" src="url(./chute.mp3)" position="0 1.6 0" volume="50"></a-sound>
+
     </a-entity>
 
     <!-- Jogadores no campo -->
@@ -314,44 +321,6 @@
     <a-gltf-model src="url(./2/scene.gltf)" scale="2 2 2" rotation="0 90 0" animation-mixer="clip:mixamo.com"
       position="-200 12 50"></a-gltf-model>
     <!-------------------------------------- Fim Publico 2 -------------------------------------->
-
-    <!-------------------------------------- Inicio Publico 3 -------------------------------------->
-    <!-- <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
-      animation-mixer="clip:mixamo.com" position="5 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
-      animation-mixer="clip:mixamo.com" position="10 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
-      animation-mixer="clip:mixamo.com" position="20 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
-      animation-mixer="clip:mixamo.com" position="30 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./sentado/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
-      position="40 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./1/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
-      position="50 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
-      animation-mixer="clip:mixamo.com" position="60 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./2/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
-      position="70 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
-      animation-mixer="clip:mixamo.com" position="80 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
-      animation-mixer="clip:mixamo.com" position="90 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
-      animation-mixer="clip:mixamo.com" position="100 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
-      animation-mixer="clip:mixamo.com" position="105 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./sentado/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
-      position="110 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./1/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
-      position="115 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./teste/scene.gltf)" scale="0.05 0.05 0.05" rotation="0 0 0"
-      animation-mixer="clip:mixamo.com" position="140 10 -140"></a-gltf-model>
-    <a-gltf-model src="url(./2/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
-      position="112 10 -140"></a-gltf-model> -->
-    <!-------------------------------------- Fim Publico 3 -------------------------------------->
-
-
-
 
     <!-- Cercas -->
     <a-plane width="400" height="2" position="0 1 -110" rotation="0 0 0" static-body opacity="0" transparent="true">
