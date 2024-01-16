@@ -67,6 +67,68 @@
 
   </script>
 
+  <script>
+    AFRAME.registerComponent("npc", {
+      init: function () {
+        var el = this.el;
+        var speed = 0.02;  // Ajuste a velocidade conforme necessário
+        var amplitude = 35;  // Ajuste a amplitude do movimento conforme necessário
+        var originalPosition = el.object3D.position.clone();
+        var time = 0;
+
+        function moveNPC() {
+          var deltaX = amplitude * Math.sin(time);
+          time += speed;
+          el.object3D.position.z = originalPosition.z + deltaX;
+
+          requestAnimationFrame(moveNPC);
+        }
+
+        moveNPC();
+      }
+    });
+
+    AFRAME.registerComponent("npc2", {
+      init: function () {
+        var el = this.el;
+        var speed = 0.02;  // Ajuste a velocidade conforme necessário
+        var amplitude = 35;  // Ajuste a amplitude do movimento conforme necessário
+        var originalPosition = el.object3D.position.clone();
+        var time = Math.PI;  // Inicia o movimento desfazado
+
+        function moveNPC2() {
+          var deltaX = amplitude * Math.sin(time);
+          time += speed;
+          el.object3D.position.z = originalPosition.z + deltaX;
+
+          requestAnimationFrame(moveNPC2);
+        }
+
+        moveNPC2();
+      }
+    });
+
+    AFRAME.registerComponent("goalkeeper", {
+      init: function () {
+        var el = this.el;
+        var speed = 0.05;  // Ajuste a velocidade conforme necessário
+        var amplitude = 15;  // Ajuste a amplitude do movimento conforme necessário
+        var originalPosition = el.object3D.position.clone();
+        var time = 0;
+
+        function moveGoalkeeper() {
+          var deltaX = amplitude * Math.sin(time);
+          time += speed;
+          el.object3D.position.z = originalPosition.z + deltaX;
+
+          requestAnimationFrame(moveGoalkeeper);
+        }
+
+        moveGoalkeeper();
+      }
+    });
+  </script>
+
 </head>
 
 <body>
@@ -77,64 +139,69 @@
     <a-sound src="src: url(./som.mp3)" autoplay="true" position="-171 2 4"></a-sound> -->
 
 
-    <a-entity id="goalkeeper" gltf-model="url(./guardaRedes/scene.gltf)" scale="4.9 4.9 4.9" position="130 0 -4"
-      rotation="0 -90 0" animation-mixer="clip:Take 001; loop:infinite"></a-entity>
+    <a-entity id="goalkeeper" class="goalkeeper" gltf-model="url(./guardaRedes/scene.gltf)" scale="4.9 4.9 4.9"
+      position="135.04903 0 -4" rotation="0 -90 0" animation-mixer="clip:Take 001; loop:infinite" player-collider
+      goalkeeper></a-entity>
+    <a-entity id="goalkeeper2" gltf-model="url(./guardaRedes/scene.gltf)" scale="4.9 4.9 4.9" position="-138.46655 0 -4"
+      rotation="0 90 0" animation-mixer="clip:Take 001; loop:infinite" player-collider goalkeeper></a-entity>
 
-    <a-sphere id="ball" position="2 30 -4" radius="1.25" color="#EF2D5E" teste></a-sphere>
 
     <a-entity foo id="player1" class="player1" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8"
-    position="2 0 -4"></a-entity>
+      position="2 0 -4"></a-entity>
     <!-- <a-gltf-model foo static-body id="player1" class="player1" scale="3.8 3.8 3.8" position="2 0 -4" src="url(./guardaRedes/scene.gltf)" ></a-gltf-model> -->
 
     <!-- <a-entity id="ball" class="ball" gltf-model="url(./bola/scene.gltf)" scale="0.3 0.3 0.3" position="0 10 -4" ></a-entity> -->
+    <a-sphere id="ball" position="2 30 -4" radius="1.25" color="#EF2D5E" teste></a-sphere>
 
     <!-- Camera attached to player -->
     <a-entity id="rig" position="0 0 0">
       <a-entity id="camera" camera look-controls position="0 10 10"></a-entity>
-     <!-- <a-entity id="camera" camera look-controls wasd-controls="acceleration:200" position="-150 20 10"></a-entity>-->
+      <!-- <a-entity id="camera" camera look-controls wasd-controls="acceleration:200" position="-150 20 10"></a-entity>-->
     </a-entity>
 
     <!-- Jogadores no campo -->
     <!-- EQUIPA1 -->
     <!-- DEFESAS -->
-    <a-entity teste1 id="NPC1" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 55"
-      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity teste2 id="NPC2" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 20"
-      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity teste3 id="NPC3" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 -20"
-      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity teste4 id="NPC4" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 -55"
-      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <!-- MEDIOS -->
-    <a-entity teste5 id="NPC5" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="40 0 -5"
-      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity teste6 id="NPC6" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="40 0 -45"
-      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity teste7 id="NPC7" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="40 0 40"
-      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
 
+
+    <!-- Adicione a classe 'npc' aos NPCs -->
+    <a-entity id="NPC1" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 55"
+      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider npc></a-entity>
+    <a-entity id="NPC2" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 20"
+      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider npc></a-entity>
+    <a-entity id="NPC3" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 -20"
+      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider npc></a-entity>
+    <a-entity id="NPC4" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="80 0 -55"
+      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider npc></a-entity>
+    <!-- MEDIOS -->
+    <a-entity id="NPC5" class="npc2" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="40 0 -5"
+      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider npc2></a-entity>
+    <a-entity id="NPC6" class="npc2" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="40 0 -45"
+      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider npc2></a-entity>
+    <a-entity id="NPC7" class="npc2" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="40 0 40"
+      rotation="0 -90 0" animation-mixer="clip:Static pose" player-collider npc2></a-entity>
     <!-- EQUIPA2 -->
     <!-- DEFESAS -->
-    <a-entity teste8 id="NPC8" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 55"
-      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity teste9 id="NPC9" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 20"
-      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity teste10 id="NPC10" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 -20"
-      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity teste11 id="NPC11" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 -55"
-      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
+    <a-entity id="NPC8" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 55"
+      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider npc></a-entity>
+    <a-entity id="NPC9" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 20"
+      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider npc></a-entity>
+    <a-entity id="NPC10" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 -20"
+      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider npc></a-entity>
+    <a-entity id="NPC11" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-80 0 -55"
+      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider npc></a-entity>
     <!-- MEDIOS -->
-    <a-entity teste12 id="NPC12" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-40 0 -5"
-      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity teste13 id="NPC13" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-40 0 -45"
-      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
-    <a-entity teste14 id="NPC14" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-40 0 40"
-      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider></a-entity>
+    <a-entity id="NPC12" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-40 0 -5"
+      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider npc2></a-entity>
+    <a-entity id="NPC13" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-40 0 -45"
+      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider npc2></a-entity>
+    <a-entity id="NPC14" class="npc" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8" position="-40 0 40"
+      rotation="0 90 0" animation-mixer="clip:Static pose" player-collider npc2></a-entity>
 
     <!-- Bancada -->
 
-    <a-entity bancada1 id="bancada1" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-175 0 150" material="color: blue"
-      rotation="0 90 0"> 
+    <a-entity bancada1 id="bancada1" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-175 0 150"
+      material="color: blue" rotation="0 90 0">
     </a-entity>
     <a-entity bancada2 id="bancada2" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-35 0 150"
       rotation="0 90 0" color="red">
@@ -171,15 +238,17 @@
     <a-entity id="baliza1" gltf-model="url(./baliza/scene.gltf)" scale="5 5 5" rotation="0 -90 0"
       position="145 0 -4"></a-entity>
     <!--Animação-->
-    <a-entity id="animacao" particles="texture: url(./assets/fireworks_sheet.png); color: blue; velocity: 0 10 0; velocity-spread: 2 0 2; acceleration: 0 -10 0" position="-144.75296 18.11185 -4" rotation="0 -90 0"></a-entity>
+    <a-entity id="animacao"
+      particles="texture: url(./assets/fireworks_sheet.png); color: blue; velocity: 0 10 0; velocity-spread: 2 0 2; acceleration: 0 -10 0"
+      position="-144.75296 18.11185 -4" rotation="0 -90 0"></a-entity>
 
 
     <a-entity id="goal-message" class="goal-message" position="-144.75296 18.11185 -4" rotation="0 90 0" visible="false"
       text="value: Gooooolo!!!; color: #fff; align: center; width: 200; "></a-entity>
     <a-entity id="baliza2" gltf-model="url(./baliza/scene.gltf)" scale="5 5 5" rotation="0 90 0"
       position="-145 0 -4"></a-entity>
-    <a-entity id="goal-message2" class="goal-message2" position="145 20.37739 -3.80201" rotation="0 -90 0" visible="false"
-      text="value: Gooooolo!!!; color: #fff; align: center; width: 200; "></a-entity>
+    <a-entity id="goal-message2" class="goal-message2" position="145 20.37739 -3.80201" rotation="0 -90 0"
+      visible="false" text="value: Gooooolo!!!; color: #fff; align: center; width: 200; "></a-entity>
 
 
 
@@ -287,7 +356,7 @@
       animation-mixer="clip:mixamo.com" position="140 10 -140"></a-gltf-model>
     <a-gltf-model src="url(./2/scene.gltf)" scale="2 2 2" rotation="0 0 0" animation-mixer="clip:mixamo.com"
       position="112 10 -140"></a-gltf-model> -->
-<!-------------------------------------- Fim Publico 3 -------------------------------------->
+    <!-------------------------------------- Fim Publico 3 -------------------------------------->
 
 
 
@@ -311,7 +380,8 @@
     </a-plane>
 
     <!-- Score text -->
-    <a-image id="score" src="score.png" position="-1.00026 24.43226 101" scale="100 60.97 1" rotation="0 180 0"></a-image>
+    <a-image id="score" src="score.png" position="-1.00026 24.43226 101" scale="100 60.97 1"
+      rotation="0 180 0"></a-image>
     <a-text id="score_1" value="0" rotation="0 180 0" position="-27.37254 32.28874 100" text="width: 300"
       color="#FFFFFF"></a-text>
     <a-text id="score_2" value="0" rotation="0 180 0" position="35.55134 32.28874 100" text="width: 300"

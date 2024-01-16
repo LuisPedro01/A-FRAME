@@ -260,6 +260,8 @@ function updateSessionDuration() {
   }, 1000); // Atualizar a cada 1000 milissegundos (1 segundo)
 }
 
+
+
 // Função para atualizar o movimento no loop de renderização
 function animate() {
   requestAnimationFrame(animate);
