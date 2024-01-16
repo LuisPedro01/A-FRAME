@@ -4,7 +4,6 @@ var rotating = false;
 var playerInContactWithBall = false;
 var score_1 = 0;
 var score_2 = 0;
-var sessionStartTime = sessionStorage.getItem('sessionStartTime');
 
 document.addEventListener("keydown", (event) => {
   if (event.isTrusted) {
@@ -226,7 +225,7 @@ function resetBallPosition() {
 // Função para obter a diferença de tempo em minutos e segundos
 function getSessionDuration() {
   // Obter o tempo de início da sessão
- 
+  var sessionStartTime = sessionStorage.getItem('sessionStartTime');
   
   if (!sessionStartTime) {
     // Se não houver tempo de início da sessão, definir um novo
