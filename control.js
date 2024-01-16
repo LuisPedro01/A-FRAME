@@ -4,6 +4,7 @@ var rotating = false;
 var playerInContactWithBall = false;
 var score_1 = 0;
 var score_2 = 0;
+var instrucions = true
 
 document.addEventListener("keydown", (event) => {
   if (event.isTrusted) {
@@ -131,6 +132,10 @@ function movePlayer() {
         if(player){
           player.setAttribute('gltf-model','./correr/scene.gltf');
           document.getElementById("player1").setAttribute("animation-mixer", "clip:Take 001; loop:infinite");
+          if (instrucions){
+            document.getElementById("instructionsCard").setAttribute("visible","false");
+            instrucions = false;
+          }
         }
         updateCameraPosition();
     }
