@@ -9,30 +9,12 @@
   <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.2.0/dist/aframe-physics-system.min.js"></script> -->
   <script src="control.js"></script>
 
-    <style>
-    #golo-message {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 20px;
-      background-color: #EF2D5E;
-      color: #fff;
-      display: none;
-      animation: fadeInOut 2s ease-in-out;
-    }
-
-    @keyframes fadeInOut {
-      0%, 100% { opacity: 0; }
-      25%, 75% { opacity: 1; }
-    }
-  </style>
   <script>
     AFRAME.registerComponent("foo", {
       init: function () {
         this.el.addEventListener("model-loaded", (e) => {
           //  document.querySelector("#ball").setAttribute("dynamic-body", "")
-          document.querySelector("#one").setAttribute("dynamic-body", "")
+          document.querySelector("#ball").setAttribute("dynamic-body", "mass:5")
           document.querySelector("#player1").setAttribute("static-body", "")
         })
       }
@@ -88,12 +70,12 @@
 </head>
 
 <body>
-  <a-scene physics="debug: false">
+  <a-scene physics="debug: false; friction: 1;">
     <!-- Jogadores -->
     <a-entity id="goalkeeper" gltf-model="url(./guardaRedes/scene.gltf)" scale="4.9 4.9 4.9" position="130 0 -4"
       rotation="0 -90 0" animation-mixer="clip:Take 001; loop:infinite"></a-entity>
 
-    <a-sphere id="one" position="2 30 -4" radius="1.25" color="#EF2D5E" teste></a-sphere>
+    <a-sphere id="ball" position="2 30 -4" radius="1.25" color="#EF2D5E" teste></a-sphere>
 
     <!-- <a-gltf-model foo static-body id="player1" class="player1" scale="3.8 3.8 3.8" position="2 0 -4" src="url(./guardaRedes/scene.gltf)" ></a-gltf-model> -->
     <a-entity foo id="player1" class="player1" gltf-model="url(./guardaRedes/scene.gltf)" scale="3.8 3.8 3.8"
@@ -145,13 +127,13 @@
 
     <!-- Bancada -->
     <!-- <a-entity gltf-model="url(./bancada2/scene.gltf)" position="-30 0 -4"></a-entity>
-    <a-entity gltf-model="url(./bancadaTop/scene.gltf)" position="-30 15 80" scale="4 4 4" rotation="0 -180 0s"></a-entity> -->
+        <a-entity gltf-model="url(./bancadaTop/scene.gltf)" position="-30 15 80" scale="4 4 4" rotation="0 -180 0s"></a-entity> -->
 
-     <a-entity bancada1 id="bancada1" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-175 0 150"
+    <a-entity bancada1 id="bancada1" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-175 0 150"
       rotation="0 90 0">
     </a-entity>
     <a-entity bancada2 id="bancada2" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-35 0 150"
-      rotation="0 90 0"color="red">
+      rotation="0 90 0" color="red">
     </a-entity>
     <a-entity bancada3 id="bancada3" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="35 0 -150"
       rotation="0 -90 0">
@@ -160,10 +142,10 @@
       rotation="0 -90 0">
     </a-entity>
     <a-entity bancada5 id="bancada5" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="200 0 110"
-    rotation="0 -180 0">
+      rotation="0 -180 0">
     </a-entity>
-    <a-entity bancada6 id="bancada6" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-200 0 -110" geometry="primitive: sphere"
-    rotation="0 0 0">
+    <a-entity bancada6 id="bancada6" gltf-model="url(./tribune/scene.gltf)" scale="1.5 1.5 1.5" position="-200 0 -110"
+      geometry="primitive: sphere" rotation="0 0 0">
     </a-entity>
 
     <!-- Banco -->
@@ -172,39 +154,31 @@
     <a-entity gltf-model="url(./banco/scene.gltf)" position="80 -0.5 -65" rotation="0 -90 0"></a-entity>
 
     <!-- Luzes -->
-    <a-entity
-      gltf-model="url(./stadium_light/scene.gltf)"
-      scale="0.05 0.05 0.05"
-      position="180 -8 100"
-      rotation="0 150 0"
-    ></a-entity>
-    <a-entity
-      gltf-model="url(./stadium_light/scene.gltf)"
-      scale="0.05 0.05 0.05"
-      position="-180 -8 100"
-      rotation="0 30 0"
-    ></a-entity>
-    <a-entity
-      gltf-model="url(./stadium_light/scene.gltf)"
-      scale="0.05 0.05 0.05"
-      position="-180 -8 -100"
-      rotation="0 -10 0"
-    ></a-entity>
-    <a-entity
-      gltf-model="url(./stadium_light/scene.gltf)"
-      scale="0.05 0.05 0.05"
-      position="180 -8 -100"
-      rotation="0 200 0"
-    ></a-entity>
+    <a-entity gltf-model="url(./stadium_light/scene.gltf)" scale="0.05 0.05 0.05" position="180 -8 100"
+      rotation="0 150 0"></a-entity>
+    <a-entity gltf-model="url(./stadium_light/scene.gltf)" scale="0.05 0.05 0.05" position="-180 -8 100"
+      rotation="0 30 0"></a-entity>
+    <a-entity gltf-model="url(./stadium_light/scene.gltf)" scale="0.05 0.05 0.05" position="-180 -8 -100"
+      rotation="0 -10 0"></a-entity>
+    <a-entity gltf-model="url(./stadium_light/scene.gltf)" scale="0.05 0.05 0.05" position="180 -8 -100"
+      rotation="0 200 0"></a-entity>
 
     <!-- Baliza -->
-    <a-entity baliza1 id="baliza1" gltf-model="url(./baliza/scene.gltf)" scale="5 5 5" rotation="0 -90 0"
+    <a-entity id="baliza1" gltf-model="url(./baliza/scene.gltf)" scale="5 5 5" rotation="0 -90 0"
       position="145 0 -4"></a-entity>
-    <a-entity baliza2 id="baliza2" gltf-model="url(./baliza/scene.gltf)" scale="5 5 5" rotation="0 90 0"
+    <!--Animação-->
+    <a-entity id="animacao" particles="texture: url(./assets/fireworks_sheet.png); color: blue; velocity: 0 10 0; velocity-spread: 2 0 2; acceleration: 0 -10 0" position="-144.75296 18.11185 -4" rotation="0 -90 0"></a-entity>
+
+
+    <a-entity id="goal-message" class="goal-message" position="-144.75296 18.11185 -4" rotation="0 90 0" visible="false"
+      text="value: Gooooolo!!!; color: #fff; align: center; width: 200; "></a-entity>
+    <a-entity id="baliza2" gltf-model="url(./baliza/scene.gltf)" scale="5 5 5" rotation="0 90 0"
       position="-145 0 -4"></a-entity>
+    <a-entity id="goal-message2" class="goal-message2" position="145 20.37739 -3.80201" rotation="0 -90 0" visible="false"
+      text="value: Gooooolo!!!; color: #fff; align: center; width: 200; "></a-entity>
 
     <!-- Publico -->
-    <a-entity gltf-model="url(./publico1/scene.gltf)" scale="3 3 3" rotation="0 -90 0"  animation-mixer="clip:mixamo.com" 
+    <a-entity gltf-model="url(./publico1/scene.gltf)" scale="3 3 3" rotation="0 -90 0" animation-mixer="clip:mixamo.com"
       position="145 0 -4"></a-entity>
 
 
@@ -217,10 +191,24 @@
     </a-plane>
 
     <!-- Linhas Golo -->
-    <a-plane collision-handler class="plane" width="36" height="22" position="-144 1 -4" rotation="0 90 0" static-body opacity="0" transparent="true">
+    <a-plane baliza1 id="baliza01" width="36" height="22" position="-144 1 -4" rotation="0 90 0" static-body opacity="0"
+      transparent="true">
     </a-plane>
-    <a-plane collision-handler class="plane" width="36" height="22" position="145 1 -4" rotation="0 -90 0" static-body opacity="0" transparent="true">
+    <a-plane baliza2 id="baliza02" width="36" height="22" position="145 1 -4" rotation="0 -90 0" static-body opacity="0"
+      transparent="true">
     </a-plane>
+
+    <!-- Score text -->
+    <a-image id="score" src="score.png" position="-1.00026 24.43226 101" scale="100 60.97 1" rotation="0 180 0"></a-image>
+    <a-text id="score_1" value="0" rotation="0 180 0" position="-27.37254 32.28874 100" text="width: 300"
+      color="#FFFFFF"></a-text>
+    <a-text id="score_2" value="0" rotation="0 180 0" position="35.55134 32.28874 100" text="width: 300"
+      color="#FFFFFF"></a-text>
+    <!--Time-->
+    <a-text id="minutes" value="00" rotation="0 180 0" position="16.77777 30.79393 100" text="width: 300"
+      color="#FFFFFF"></a-text>
+    <a-text id="seconds" value="00" rotation="0 180 0" position="-1.72629 30.79393 100" text="width: 300"
+      color="#FFFFFF"></a-text>
 
 
     <!-- Relvado -->

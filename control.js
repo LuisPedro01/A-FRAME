@@ -2,6 +2,9 @@ var keysPressed = [];
 var movingDirection = null; // Pode ser "forward", "backward" ou null
 var rotating = false;
 var playerInContactWithBall = false;
+var score_1 = 0;
+var score_2 = 0;
+var sessionStartTime = sessionStorage.getItem('sessionStartTime');
 
 document.addEventListener("keydown", (event) => {
   if (event.isTrusted) {
@@ -22,9 +25,6 @@ document.addEventListener("keydown", (event) => {
           break;
         case "ArrowRight":
           startRotation("right");
-          break;
-        case "Space":
-          tryKick();
           break;
       }
     }
@@ -51,26 +51,43 @@ document.addEventListener("keyup", (event) => {
   }
 });
 
-// Adicione a função para tentar chutar quando a tecla de espaço é pressionada
-function tryKick() {
-  if (playerInContactWithBall) {
-    kickBall();
-  }
-}
 
 
-AFRAME.registerComponent("player1", {
+AFRAME.registerComponent("baliza1", {
     init: function () {
       var el = this.el;
 
       el.addEventListener("collide", function (e) {
-        if (e.detail.body.el.id === "ball" && el.id === "player1") {
-          console.log("Collision detected between player and ball");
-          
+        if (e.detail.body.el.id === "ball" && el.id === "baliza01") {
+          console.log("golo baliza1");
+          score_1 += 1;
+          setTimeout(function () {
+            updateScoreText();
+          },1000);
+          document.getElementById('goal-message').setAttribute('visible', 'true');
         }
       });
     },
   });
+
+  
+AFRAME.registerComponent("baliza2", {
+  init: function () {
+    var el = this.el;
+
+    el.addEventListener("collide", function (e) {
+      if (e.detail.body.el.id === "ball" && el.id === "baliza02") {
+        console.log("golo baliza2");
+        score_2 += 1;
+        setTimeout(function () {
+          updateScoreText();
+        },1000);
+        document.getElementById('goal-message2').setAttribute('visible', 'true');
+        
+      }
+    });
+  },
+});
 
 // Função para verificar e atualizar o movimento contínuo
 function checkMovement() {
@@ -169,30 +186,87 @@ function rotatePlayer(direction) {
   }
 }
 
-// Função para chutar a bola
-function kickBall() {
-  var ball = document.getElementById("ball");
-  var player = document.getElementById("player1");
-  var force = 10;
+  
+function updateScoreText() {
+  var scoreText = document.getElementById('score_1');
+  scoreText.setAttribute('value', score_1);
+  var scoreText = document.getElementById('score_2');
+  scoreText.setAttribute('value', score_2);
+  document.getElementById('goal-message2').setAttribute('visible', 'false');
+  document.getElementById('goal-message').setAttribute('visible', 'false');
 
-  if (ball.body) {
-    console.log("kick");
-        var direction = new THREE.Vector3(0, 0, -1).applyQuaternion(player.object3D.quaternion);
-
-    ball.body.applyImpulse(
-            new CANNON.Vec3(direction.x * force, direction.y * force, direction.z * force),
-      ball.body.position
-    );
-  }
+  resetBallPosition();
+  resetPlayerPosition(); 
 }
 
-  
+function resetPlayerPosition() {
+  var player = document.getElementById('player1');
+  setTimeout(function () {
+    player.setAttribute('position', '2 0 -4');  // Posição inicial do jogador
+    player.setAttribute('rotation', '0 0 0');  // Posição inicial do jogador
+    
+  }, 100);
+}
 
-// Função para atualizar o movimento e chutar a bola no loop de renderização
+function resetBallPosition() {
+  var ball = document.getElementById('ball');
+  setTimeout(function () {
+    
+  },1000);
+  setTimeout(function () {
+    // Posição inicial da bola
+    ball.removeAttribute('dynamic-body');
+    ball.setAttribute('static-body')
+    ball.setAttribute('position','2, 10, -4');
+    ball.removeAttribute('static-body');
+    ball.setAttribute('dynamic-body')
+
+  }, 100); 
+}
+// Função para obter a diferença de tempo em minutos e segundos
+function getSessionDuration() {
+  // Obter o tempo de início da sessão
+ 
+  
+  if (!sessionStartTime) {
+    // Se não houver tempo de início da sessão, definir um novo
+    sessionStartTime = Date.now();
+    sessionStorage.setItem('sessionStartTime', sessionStartTime);
+  }
+
+  // Obter o tempo atual
+  var currentTime = Date.now();
+
+  // Calcular a diferença de tempo em milissegundos
+  var timeDifference = currentTime - sessionStartTime;
+
+  // Calcular minutos e segundos
+  var minutes = Math.floor(timeDifference / 60000); // 1 minuto = 60.000 milissegundos
+  var seconds = Math.floor((timeDifference % 60000) / 1000); // 1 segundo = 1.000 milissegundos
+   // Adicionar zeros à esquerda se for menor que 10
+  minutes = (minutes < 10) ? "0" + minutes : minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+ 
+  return { minutes, seconds };
+}
+
+function updateSessionDuration() {
+  setInterval(function() {
+    var sessionDuration = getSessionDuration();
+   //console.clear(); // Limpa a tela do console (opcional)
+    document.getElementById('minutes').setAttribute('value', sessionDuration.minutes);
+    document.getElementById('seconds').setAttribute('value', sessionDuration.seconds);
+
+    //console.log("Tempo de sessão: " + sessionDuration.minutes + " minutos e " + sessionDuration.seconds + " segundos");
+  }, 1000); // Atualizar a cada 1000 milissegundos (1 segundo)
+}
+
+// Função para atualizar o movimento no loop de renderização
 function animate() {
   requestAnimationFrame(animate);
   movePlayer();
   updateCameraPosition();
 }
+updateSessionDuration();
 
-animate(); // Inicie o loop de renderização
+animate(); 
